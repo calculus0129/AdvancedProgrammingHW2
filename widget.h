@@ -40,12 +40,13 @@ class vertical_split : public widget {
     char char_at(unsigned int x, unsigned int y, unsigned int width, unsigned int height) const;
     public:
     vertical_split(widget *a, widget *b): t(a), b{b} {}
+    // Destructor
     ~vertical_split() { delete t; delete b; }
     // Copy Constructor
     vertical_split(const vertical_split& o) : t(o.t->copy()), b{o.b->copy()} {}
     // Assignment Operator
     vertical_split& operator=(const vertical_split &o);
-    widget* copy() const { return new vertical_split(*this); };
+    widget* copy() const { return new vertical_split(*this); }
 };
 
 class window : public widget {
@@ -57,6 +58,20 @@ class window : public widget {
     window(const window &w) : aw{w.aw->copy()} {}
     window& operator=(window const &w);
     window* copy() const { return new window(*this); }
+};
+
+class overlapping : public widget {
+    widget *b, *f;
+    char char_at(unsigned int x, unsigned int y, unsigned int width, unsigned int height) const;
+    public:
+    overlapping(widget *a, widget *b): b(a), f{b} {}
+    // Destructor
+    ~overlapping() { delete b; delete f; }
+    // Copy Constructor
+    overlapping(const overlapping& o) : b(o.b->copy()), f{o.f->copy()} {}
+    // Assignment Operator
+    overlapping& operator=(const overlapping &o);
+    widget* copy() const { return new overlapping(*this); }
 };
 
 #endif

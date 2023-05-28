@@ -53,3 +53,25 @@ window& window::operator=(window const &w) {
     aw = w.aw->copy();
     return *this;
 }
+
+char overlapping::char_at(unsigned int x, unsigned int y, unsigned int width, unsigned int height) const {
+    if(x<0 || y<0 || x>=width || y>=height) return ' '; // exceptional case. Not considered in the assignment02.pdf.
+    unsigned int w=width/3, h=height/3;
+    if(x>w && y>h) {
+        return f->char_at(x-w, y-h, width-w, height-h);
+    }
+    else if (x+w<width && y+h<height) {
+        return b->char_at(x, y, width-w, height-h);
+    }
+    return ' ';
+}
+
+overlapping& overlapping::operator=(const overlapping &o) {
+    if(b != nullptr) {
+        delete b;
+        delete f;
+    }
+    b = o.b->copy();
+    f = o.f->copy();
+    return *this;
+}
