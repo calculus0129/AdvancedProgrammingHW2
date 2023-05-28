@@ -17,4 +17,14 @@ class label : public widget {
     char char_at(unsigned int x, unsigned int y, unsigned int width, unsigned int height) const;
 };
 
+class checkerboard : public widget {
+    char a, b;
+    public:
+    checkerboard(char a, char b)
+    : a{a}, b(b) {
+
+    }
+    char char_at(unsigned int x, unsigned int y, unsigned int width, unsigned int height) const;
+};
+
 #endif
