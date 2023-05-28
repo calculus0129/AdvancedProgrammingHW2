@@ -1,12 +1,13 @@
 # AdvancedProgrammingHW2
-Making a custom TUI
+UNIST 2023-2 (2-1) Advancd Programming HW2
+: Making a custom TUI
 
 23/5/28-5/29
 
 ## Usage
-1. Install the files (zip files, maybe)
-1. Run pgm00-pgm10. (Linux command: .pgm10)
-1. If you wish, you may input 'make' at the location of these files.
+1. Install the files.
+1. Run pgm00-pgm10. (Linux command: .pgmXX)
+1. If you wish, you may input 'make' at the location of these files and build yourselves.
 
 ## Example
 
