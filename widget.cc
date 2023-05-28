@@ -30,3 +30,26 @@ vertical_split& vertical_split::operator=(const vertical_split &o) {
     b = o.b->copy();
     return *this;
 }
+
+char window::char_at(unsigned int x, unsigned int y, unsigned int width, unsigned int height) const {
+    if(x<0 || y<0 || x>=width || y>=height) return ' '; // exceptional case. Not considered in the assignment02.pdf.
+    bool r1 = x==0 || x==width-1, r2 = y==0 || y==height-1;
+    if(r1 || r2) {
+        if(r1&&r2) {
+            return '+';
+        }
+        if(r1) {
+            return '|';
+        }
+        return '-';
+    }
+    return aw->char_at(x-1, y-1, width-2, height-2);
+}
+
+window& window::operator=(window const &w) {
+    if(aw != nullptr) {
+        delete aw;
+    }
+    aw = w.aw->copy();
+    return *this;
+}

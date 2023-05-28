@@ -48,4 +48,15 @@ class vertical_split : public widget {
     widget* copy() const { return new vertical_split(*this); };
 };
 
+class window : public widget {
+    widget *aw;
+    char char_at(unsigned int x, unsigned int y, unsigned int width, unsigned int height) const;
+    public:
+    ~window() { delete aw; }
+    window(widget* aw) : aw(aw) {}
+    window(const window &w) : aw{w.aw->copy()} {}
+    window& operator=(window const &w);
+    window* copy() const { return new window(*this); }
+};
+
 #endif
