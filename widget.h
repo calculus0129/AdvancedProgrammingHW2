@@ -27,4 +27,8 @@ class checkerboard : public widget {
     char char_at(unsigned int x, unsigned int y, unsigned int width, unsigned int height) const;
 };
 
+class stretchy : public widget {
+    char char_at(unsigned int x, unsigned int y, unsigned int width, unsigned int height) const;
+};
+
 #endif
